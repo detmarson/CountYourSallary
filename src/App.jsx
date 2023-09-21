@@ -36,12 +36,6 @@ function App() {
 		localStorage.setItem('calendar', JSON.stringify(calendar))
 	}, [calendar])
 
-	useEffect(() => {
-		const totalHours = calendar.reduce((acc, day) => acc + day.hours, 0)
-		const totalSalary = ratePerHour * totalHours
-		setDisplaySalary(totalSalary.toFixed(2))
-	}, [calendar, ratePerHour])
-
 	const handleCheck = id => e => {
 		const checked = e.target.checked
 		setCalendar(prevCalendar => prevCalendar.map(day => (day.id === id ? { ...day, checked } : day)))
